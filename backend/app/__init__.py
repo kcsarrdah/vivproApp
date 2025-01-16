@@ -36,9 +36,9 @@ def create_app():
     # Import models
     from app.models.song import Song
     
-    with app.app_context():
-        # Create database tables
-        db.create_all()
+    # with app.app_context():
+    #     # Create database tables
+    #     db.create_all()
         
     # Register blueprints
     from app.controllers.song_controller import songs_bp

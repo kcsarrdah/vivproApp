@@ -33,5 +33,5 @@ class Song(db.Model):
             'duration_ms': self.duration_ms,
             'num_sections': self.num_sections,
             'num_segments': self.num_segments,
-            'star_rating': self.star_rating
+            'star_rating': self.star_rating 
         }
