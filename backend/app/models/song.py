@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, UTC
 from app import db  # Only import db from app
 
 class Song(db.Model):
@@ -17,7 +17,7 @@ class Song(db.Model):
     num_sections = db.Column(db.Integer)
     num_segments = db.Column(db.Integer)
     star_rating = db.Column(db.Integer, default=0)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.now(UTC))
 
     def to_dict(self):
         return {

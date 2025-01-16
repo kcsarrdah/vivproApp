@@ -1,0 +1,32 @@
+CORS (Cross-Origin Resource Sharing):
+
+Security feature in browsers that blocks web pages from making requests to different domains
+Example: Frontend at website.com can't fetch data from API at api.com without CORS
+flask_cors enables these cross-domain requests by adding proper headers
+Essential for web APIs used by frontend applications
+create_app Function:
+
+Not Flask-specific, it's a convention (called "application factory")
+Creates and configures Flask application instance
+Unlike Create React App (which is a project generator), Flask has no official project generator
+You write configuration code yourself or use community templates
+URI and Modification Tracking:
+
+URI (Uniform Resource Identifier) is like a path/address to your resource (here, database location)
+Modification tracking in SQLAlchemy monitors model changes for automatic updates
+Disabled because it uses extra memory and can impact performance if you don't need it
+Flask App Context:
+
+Like a container holding app-specific data during a request
+app_context() creates this container
+Needed for operations that require application context (like database operations)
+Ensures code runs in proper application environment
+Factory Pattern:
+
+Design pattern where function creates objects (here, Flask app instances)
+Advantages:
+Multiple instances with different configs (useful for testing)
+Delayed setup of application
+Better separation of concerns
+Easier testing because you can create fresh app instances
+ Copy

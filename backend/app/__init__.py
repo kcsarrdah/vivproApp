@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-# Create db instance
+# Create global db instance
 db = SQLAlchemy()
 
 def create_app():
@@ -19,11 +19,18 @@ def create_app():
     # Configuration with absolute path
     database_path = os.path.join(db_path, 'songs.db')
     print(f"Database path: {database_path}")
+    
+    # More permissive CORS settings for debugging
+    CORS(app, 
+         resources={r"/*": {"origins": "*"}},
+         allow_headers=["Content-Type", "Authorization"],
+         methods=["GET", "POST", "PUT", "DELETE"])
+    
+    # Database configuration
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{database_path}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     # Initialize extensions
-    CORS(app)
     db.init_app(app)
 
     # Import models
@@ -32,9 +39,15 @@ def create_app():
     with app.app_context():
         # Create database tables
         db.create_all()
+        
+    # Register blueprints
+    from app.controllers.song_controller import songs_bp
+    app.register_blueprint(songs_bp)
     
     @app.route('/health')
     def health_check():
         return {'status': 'healthy', 'message': 'Flask backend is running!'}
     
     return app
+
+
