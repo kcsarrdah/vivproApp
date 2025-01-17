@@ -27,6 +27,9 @@ frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
+#Main File 
+node_modules/
+
 # IDE
 .vscode/
 .idea/
