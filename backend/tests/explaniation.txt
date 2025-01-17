@@ -1,0 +1,43 @@
+test_health_check
+
+Tests if server is running
+Checks /health endpoint returns 200 status and correct message
+
+
+test_get_songs_empty_db
+
+Tests GET /api/songs/ when database is empty
+Verifies it returns empty items list and proper structure
+
+
+test_load_data
+
+Tests POST /api/songs/load-data
+Verifies:
+
+Data loads successfully
+Response message is correct
+Database now contains songs
+
+
+
+
+test_pagination
+
+Tests GET /api/songs/?size=5
+Verifies pagination works:
+
+Returns correct number of items (5)
+Data is properly structured
+
+
+
+
+test_rate_song
+
+Tests PUT /api/songs/rate/1
+Verifies:
+
+Can update a song's rating
+Rating is saved correctly
+Can retrieve updated rating

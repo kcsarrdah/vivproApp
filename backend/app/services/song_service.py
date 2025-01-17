@@ -62,7 +62,7 @@ class SongService:
     def update_song_rating(song_id, rating):
         """Update the star rating for a song"""
         try:
-            song = Song.query.get(song_id)
+            song = db.session.get(Song, song_id)
             if song:
                 song.star_rating = rating
                 db.session.commit()
