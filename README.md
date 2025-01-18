@@ -160,6 +160,11 @@ pip install pytest pytest-flask
 pytest -v
 ```
 
+### from frontend tests
+```bash
+npm test -- --watchAll
+```
+
 ## To retest, we can clear the Db in our backend directory with the following command:
 ```bash
 rm -f instance/songs.db
