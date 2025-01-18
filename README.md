@@ -1,6 +1,4 @@
-vivpro Take Home
-
-## vivpro app demo
+# vivpro app demo
 
 Song Playlist Application
 A full-stack application to manage and rate songs from a playlist. The application allows users to view song details, paginate through the playlist, and rate songs.
@@ -14,11 +12,7 @@ A full-stack application to manage and rate songs from a playlist. The applicati
 
 ### Installation
 
-1. Clone the repository:
-    ```bash
-    git clone <repository-url>
-    cd song-playlist-app
-    ```
+1. Clone the repository
 
 2. Set up Python virtual environment:
     ```bash
@@ -42,31 +36,29 @@ python run.py
 ```
 The server will start at http://localhost:8000
 
-## Project Structure
+## Frontend Setup
 
-```plaintext
-backend/
-├── app/
-│   ├── __init__.py           # Flask app initialization
-│   ├── models/
-│   │   └── song.py           # Song model definition
-│   ├── controllers/
-│   │   └── song_controller.py # Route handlers
-│   ├── services/
-│   │   └── song_service.py    # Business logic
-│   └── utils/
-│       └── data_processor.py  # Data processing utilities
-├── tests/
-│   ├── conftest.py           # Test configurations
-│   └── test_routes.py        # API tests
-├── data/
-│   └── playlist.json         # Initial song data
-├── config.py                 # Configuration settings
-├── requirements.txt          # Python dependencies
-└── run.py                    # Application entry point
+### Prerequisites
+
+- Node.js
+- Npm
+
+### Installation
+
+1. Install all the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+1. Make sure you have the backend running
+
+2. Start the React App:
+```bash
+npm start
 ```
 
-## Available Endpoints
+# Available API Endpoints
 
 ### Health Check
 
@@ -166,3 +158,4 @@ pip install pytest pytest-flask
 # Run tests
 pytest -v
 ```
+
