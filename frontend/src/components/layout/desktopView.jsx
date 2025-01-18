@@ -1,54 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, Paper } from '@mui/material';
 import SongTable from '../table/songTable';
 import DanceabilityChart from '../charts/danceabilityScatterChart';
 import DurationHistogram from '../charts/durationHistogram';
-import { getSongs } from '../../services/api';
 import AcousticsTempoCharts from '../charts/acousticsTempoCharts';
 
-const DesktopView = () => {
-  const [songs, setSongs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [paginationModel, setPaginationModel] = useState({
-    page: 0,
-    pageSize: 10,
-  });
-  const [totalRows, setTotalRows] = useState(0);
-  const [sortDirection, setSortDirection] = useState('default');
-
-  const fetchData = async (page, pageSize) => {
-    try {
-      setLoading(true);
-      const top = page * pageSize;
-      const data = await getSongs(top, pageSize);
-      let sortedSongs = [...data.items];
-
-      // Apply sorting based on direction
-      switch (sortDirection) {
-        case 'asc':
-          sortedSongs.sort((a, b) => a.title.localeCompare(b.title));
-          break;
-        case 'desc':
-          sortedSongs.sort((a, b) => b.title.localeCompare(a.title));
-          break;
-        default:
-          sortedSongs = data.items;
-      }
-
-      setSongs(sortedSongs);
-      setTotalRows(data.total);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData(paginationModel.page, paginationModel.pageSize);
-  }, [paginationModel, sortDirection]);
-
+const DesktopView = ({ 
+  songs, 
+  setSongs, 
+  loading, 
+  error,
+  paginationModel,
+  setPaginationModel,
+  totalRows,
+  sortDirection,
+  setSortDirection 
+}) => {
   return (
     <Box sx={{ 
       display: 'flex', 
@@ -73,10 +40,10 @@ const DesktopView = () => {
 
       {/* Right side - Charts */}
       <Paper sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column', gap: 2, overflow: 'auto' }}>
-  <DanceabilityChart data={songs} />
-  <DurationHistogram data={songs} />
-  <AcousticsTempoCharts data={songs} />
-</Paper>
+        <DanceabilityChart data={songs} />
+        <DurationHistogram data={songs} />
+        <AcousticsTempoCharts data={songs} />
+      </Paper>
     </Box>
   );
 };

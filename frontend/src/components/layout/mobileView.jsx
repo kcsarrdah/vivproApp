@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
-import { Box, Tabs, Tab, Paper, Typography } from '@mui/material';
+import { Box, Tabs, Tab, Paper } from '@mui/material';
+import SongTable from '../table/songTable';
+import DanceabilityChart from '../charts/danceabilityScatterChart';
+import DurationHistogram from '../charts/durationHistogram';
+import AcousticsTempoCharts from '../charts/acousticsTempoCharts';
 
-const MobileView = () => {
+const MobileView = ({ 
+  songs, 
+  setSongs, 
+  loading, 
+  error,
+  paginationModel,
+  setPaginationModel,
+  totalRows,
+  sortDirection,
+  setSortDirection 
+}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -22,14 +36,33 @@ const MobileView = () => {
       <Box sx={{ p: 2 }}>
         {value === 0 && (
           <Paper sx={{ p: 2 }}>
-            <Typography variant="h6">Songs Table</Typography>
-            {/* Table component will go here */}
+            <SongTable 
+              songs={songs}
+              setSongs={setSongs}
+              loading={loading}
+              error={error}
+              paginationModel={paginationModel}
+              setPaginationModel={setPaginationModel}
+              totalRows={totalRows}
+              sortDirection={sortDirection}
+              setSortDirection={setSortDirection}
+            />
           </Paper>
         )}
         {value === 1 && (
-          <Paper sx={{ p: 2 }}>
-            <Typography variant="h6">Visualizations</Typography>
-            {/* Charts will go here */}
+          <Paper 
+            sx={{ 
+              p: 2,
+              display: 'flex', 
+              flexDirection: 'column',
+              gap: 2,
+              maxHeight: 'calc(100vh - 150px)',  // Adjust based on your needs
+              overflowY: 'auto'
+            }}
+          >
+            <DanceabilityChart data={songs} />
+            <DurationHistogram data={songs} />
+            <AcousticsTempoCharts data={songs} />
           </Paper>
         )}
       </Box>
