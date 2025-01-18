@@ -41,6 +41,7 @@ const SearchBar = () => {
         variant="contained"
         onClick={handleSearch}
         disabled={!searchValue.trim()}
+        data-testid="sort-button"
       >
         Get Song
       </Button>

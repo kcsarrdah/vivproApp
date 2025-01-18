@@ -23,7 +23,9 @@ const MobileView = ({
   };
 
   return (
-    <Box sx={{ flex: 1 }}>
+    <Box 
+    data-testid="mobile-view" 
+    sx={{ flex: 1 }}>
       <Tabs
         value={value}
         onChange={handleChange}

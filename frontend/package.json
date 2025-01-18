@@ -21,6 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@mui)/\"",
+    "test:watch": "react-scripts test --watchAll --transformIgnorePatterns \"node_modules/(?!@mui)/\"",
+    "test:coverage": "react-scripts test --coverage --watchAll=false --transformIgnorePatterns \"node_modules/(?!@mui)/\"",
+    "test:api": "react-scripts test src/services/api.test.js --transformIgnorePatterns \"node_modules/(?!@mui)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

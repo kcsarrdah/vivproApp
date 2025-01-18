@@ -17,7 +17,9 @@ const DesktopView = ({
   setSortDirection 
 }) => {
   return (
-    <Box sx={{ 
+    <Box 
+    data-testid="desktop-view" 
+    sx={{ 
       display: 'flex', 
       flex: 1,
       gap: 2,
