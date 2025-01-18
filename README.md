@@ -47,6 +47,7 @@ The server will start at http://localhost:8000
 
 1. Install all the dependencies:
     ```bash
+    cd frontend
     npm install
     ```
 
@@ -159,3 +160,7 @@ pip install pytest pytest-flask
 pytest -v
 ```
 
+## To retest, we can clear the Db in our backend directory with the following command:
+```bash
+rm -f instance/songs.db
+```
