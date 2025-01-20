@@ -53,8 +53,10 @@ The server will start at http://localhost:8000
 
 ### Running the Application
 1. Make sure you have the backend running
+2. create a data folder in the /backend directory and add the playlist.json file in it.
+3. run the "Load Initial Data" post request to create the database and avoid seeing an empty playlist. 
 
-2. Start the React App:
+4. Start the React App:
 ```bash
 npm start
 ```
